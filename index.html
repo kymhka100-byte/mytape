@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>유튜브 테이프</title>
-<!-- index 8번: 하얀 마이마이 · 색 바꾸기(실버 메탈) · 30도 뚜껑 · 카톡 카드 선물 + 한마디 · 녹음 소리 -->
+<!-- index 8-1번: 카톡 카드 링크 주소 고정 + 예전 방식 링크 보내기 버튼 | index 8번: 하얀 마이마이 · 색 바꾸기(실버 메탈) · 30도 뚜껑 · 카톡 카드 선물 + 한마디 · 녹음 소리 -->
 <!-- 카톡·문자에 링크를 보내면 이 그림과 글이 카드로 보여요 -->
 <meta name="description" content="테이프 선물이 왔어요! 눌러서 마이마이로 들어 보세요.">
 <meta property="og:type" content="website">
@@ -469,9 +469,9 @@ h1{font-size:19px;margin:10px 0 8px;text-align:center;letter-spacing:1px}
     <input class="memo" id="gMemo" maxlength="60" placeholder="비워 두면: 테이프 선물이 왔어요!">
     <div class="popbtns" style="grid-template-columns:1fr">
       <button class="pbtn gift2" id="gShare" style="font-size:22px;padding:17px">💬 카톡으로 선물하기</button>
-      <button class="pbtn back gcopy" id="gCopy">🔗 링크만 복사하기</button>
+      <button class="pbtn back gcopy" id="gCopy">🔗 링크로 보내기 (예전 방식)</button>
     </div>
-    <p id="giftHelp" style="font-size:14px;margin:8px 0 0">카톡이 열리면 친구를 고르세요. 친구에게는 긴 주소 대신 테이프 그림 카드와 "테이프 받기" 버튼이 가요.</p>
+    <p id="giftHelp" style="font-size:14px;margin:8px 0 0">카톡이 열리면 친구를 고르세요. 친구에게는 긴 주소 대신 테이프 그림 카드와 "테이프 받기" 버튼이 가요. 카드가 안 열리면 아래 "링크로 보내기"를 쓰세요.</p>
     <div class="voicebox">
       <button class="pbtn rec" id="gRec">🎙 목소리 한마디 녹음</button>
       <button class="pbtn" id="gPlayV" hidden>▶ 들어 보기</button>
@@ -1345,7 +1345,10 @@ function b64e(s){return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-')
 function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return decodeURIComponent(escape(atob(s)));}
 var giftLink='',giftName='',giftIdx=-1;
 function giftList(t){return filled(t).filter(function(k){return !isFile(t.songs[k]);});}
-function makeGiftLink(t,name,memo){return location.origin+location.pathname+'?t='+b64e(name)+'.'+giftList(t).map(function(k){return idOf(t.songs[k].url);}).join('')+(memo?'&m='+b64e(memo):'');}
+/* 선물 주소는 카카오에 등록한 주소로 고정해요 (카드를 눌렀을 때 열리게) */
+var GIFT_BASE='https://kymhka100-byte.github.io/mytape/';
+function giftBase(){return location.hostname==='kymhka100-byte.github.io'?GIFT_BASE:(location.origin+location.pathname);}
+function makeGiftLink(t,name,memo){return giftBase()+'?t='+b64e(name)+'.'+giftList(t).map(function(k){return idOf(t.songs[k].url);}).join('')+(memo?'&m='+b64e(memo):'');}
 /* 카카오톡 공유 (카드 + "테이프 받기" 버튼) */
 var KAKAO_KEY='8a4ef242c470c1e15ab9eea448f34e8c',CARD_IMG='https://kymhka100-byte.github.io/mytape/tape-card.png',kakaoP=null;
 function kakaoLoad(){
@@ -1390,7 +1393,7 @@ function openGift(i){
   $('gB').setAttribute('start',half+1);
   $('gB').innerHTML=B.length?B.map(li).join(''):'<li class="none">(비어 있어요)</li>';
   $('giftText').textContent='이름표를 누르면 보낼 제목을 고칠 수 있어요. '+L.length+'곡이 들어가요.'+(nf?' 내 휴대폰 노래 '+nf+'곡은 빠져요.':'');
-  $('giftHelp').innerHTML=LOCAL?'⚠ 선물하기는 인터넷 주소(GitHub)에서 열었을 때만 돼요.':'카톡이 열리면 친구를 고르세요. 친구에게는 긴 주소 대신 테이프 그림 카드와 "테이프 받기" 버튼이 가요.';
+  $('giftHelp').innerHTML=LOCAL?'⚠ 선물하기는 인터넷 주소(GitHub)에서 열었을 때만 돼요.':'카톡이 열리면 친구를 고르세요. 친구에게는 긴 주소 대신 테이프 그림 카드와 "테이프 받기" 버튼이 가요. 카드가 안 열리면 아래 "링크로 보내기"를 쓰세요.';
   kakaoLoad();
   voiceShow();
   $('giftWrap').classList.add('show');
@@ -1425,11 +1428,17 @@ $('gShare').addEventListener('click',function(){
     }catch(e){openKakao();}
   }else openKakao();
 });
+/* 예전 방식: 링크를 복사하고 공유 창(또는 카톡)을 열어요. 받은 사람은 링크를 누르면 바로 열려요 */
 $('gCopy').addEventListener('click',function(){
   if(giftIdx<0)return;
   var t=tapes[giftIdx],name=($('gTitle').value||'').trim()||t.name,memo=($('gMemo').value||'').trim();
-  var link=makeGiftLink(t,name,memo);copyNow('📼 "'+name+'" '+(memo||'테이프 선물이 왔어요!')+'\n'+link);
-  msg('🔗 선물 링크를 복사했어요. 문자나 다른 곳에 붙여넣기 하세요.');
+  var link=makeGiftLink(t,name,memo),text='📼 "'+name+'" '+(memo||'테이프 선물이 왔어요! 눌러서 들어 보세요 🎶')+'\n'+link;
+  copyNow(text);
+  if(LOCAL){msg('🔗 선물 링크를 복사했어요. 붙여넣기 해서 보내세요.');return;}
+  if(navigator.share){
+    try{navigator.share({text:text}).then(function(){$('giftWrap').classList.remove('show');msg('🎁 선물을 보냈어요!');})
+      .catch(function(err){if(!err||err.name!=='AbortError')openKakao();});}catch(e){openKakao();}
+  }else openKakao();
 });
 $('gClose').addEventListener('click',function(){$('giftWrap').classList.remove('show');});
 $('giftWrap').addEventListener('click',function(e){if(e.target===this)this.classList.remove('show');});
