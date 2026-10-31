@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>유튜브 테이프</title>
-<!-- index 12번: 입체감+바닥 반사 · X표는 화살표 사이(빈 칸도 남김) · 팝송 추가 · songs.json 노래 목록 · YMwav 5번 누르면 목록 만들기 | index 11번: 간단 선물 창(카톡·문자 한 곡 선물, 담은 곡 모두 선물) · 트로트/발라드 랜덤 10곡 테이프 · 곡 지우기 · 나무결 서랍 · 앱 없으면 플레이스토어로(주소 넣으면 켜짐) | index 10번: 색 버튼 화살표 · 작은 LED · 선물상자 콩닥 · 투명 안내글 · 작은 N-T/R-T · 나무 서랍(테이프 수·재생 번호·돋보기) · 노래 목록 정렬 | index 9번: MY·MY 대신 안내 전광판 · 색 버튼 옆 파란 LED · 선물 테이프 3초 뒤 자동 재생 · 카드 기본 문구 "좋은 노래를 담았어요" · 입체감 | index 8-1번: 카톡 카드 링크 주소 고정 + 예전 방식 링크 보내기 버튼 | index 8번: 하얀 마이마이 · 색 바꾸기(실버 메탈) · 30도 뚜껑 · 카톡 카드 선물 + 한마디 · 녹음 소리 -->
+<!-- index 13번: 바닥 반사 빼서 가볍게 · 선물상자 작게 · 테이프 넣고 1초 안에 재생 · 리본 카드 | index 12번: 입체감+바닥 반사 · X표는 화살표 사이(빈 칸도 남김) · 팝송 추가 · songs.json 노래 목록 · YMwav 5번 누르면 목록 만들기 | index 11번: 간단 선물 창(카톡·문자 한 곡 선물, 담은 곡 모두 선물) · 트로트/발라드 랜덤 10곡 테이프 · 곡 지우기 · 나무결 서랍 · 앱 없으면 플레이스토어로(주소 넣으면 켜짐) | index 10번: 색 버튼 화살표 · 작은 LED · 선물상자 콩닥 · 투명 안내글 · 작은 N-T/R-T · 나무 서랍(테이프 수·재생 번호·돋보기) · 노래 목록 정렬 | index 9번: MY·MY 대신 안내 전광판 · 색 버튼 옆 파란 LED · 선물 테이프 3초 뒤 자동 재생 · 카드 기본 문구 "좋은 노래를 담았어요" · 입체감 | index 8-1번: 카톡 카드 링크 주소 고정 + 예전 방식 링크 보내기 버튼 | index 8번: 하얀 마이마이 · 색 바꾸기(실버 메탈) · 30도 뚜껑 · 카톡 카드 선물 + 한마디 · 녹음 소리 -->
 <!-- 카톡·문자에 링크를 보내면 이 그림과 글이 카드로 보여요 -->
 <meta name="description" content="테이프 선물이 왔어요! 눌러서 마이마이로 들어 보세요.">
 <meta property="og:type" content="website">
@@ -539,6 +539,17 @@ body{background:radial-gradient(ellipse 90% 40% at 50% 520px,#1c2230,#000 70%) n
 .mv .del{width:28px;height:22px;font-size:12px;border:1px solid #ff8a8a;background:#2a1010;color:#ffb0b0;border-radius:6px;padding:0}
 .radio .rbtn{font-size:13px;padding:4px 3px}
 .radio .rbtn+.rbtn::before{margin-right:3px}
+/* ===== 13번: 가볍게 ===== */
+.mymy{-webkit-box-reflect:none!important;margin-bottom:14px!important}
+.mymy .body{box-shadow:0 0 0 2px var(--bd),inset 0 3px 0 rgba(255,255,255,.85),inset 0 -6px 0 rgba(0,0,0,.08),
+  0 4px 0 1px color-mix(in srgb,var(--b2) 75%,#000),0 8px 0 1px color-mix(in srgb,var(--b2) 60%,#000)!important}
+.key{box-shadow:inset 0 2px 0 rgba(255,255,255,.9),0 8px 0 var(--kd)}
+body{background:#000!important}
+.door{transition-duration:.3s}
+.cassette{transition:transform .45s cubic-bezier(.25,.8,.3,1),opacity .3s}
+.topbar .gift{font-size:19px!important}
+.gcount{font-size:11px!important;right:-7px!important;top:-6px!important}
+.kym{padding:6px 4px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 </style>
 </head>
 <body>
@@ -901,7 +912,7 @@ var autoTimer=null;
 function cancelAuto(){if(autoTimer){clearTimeout(autoTimer);autoTimer=null;}$('kPlay').classList.remove('pulse');}
 function autoPlaySoon(){
   cancelAuto();$('kPlay').classList.add('pulse');
-  autoTimer=setTimeout(function(){autoTimer=null;$('kPlay').classList.remove('pulse');if(!playing&&!busy)onPlay();},3000);
+  autoTimer=setTimeout(function(){autoTimer=null;$('kPlay').classList.remove('pulse');if(!playing&&!busy)onPlay();},1000);
 }
 function setTheme(n){
   var m=$('mymy');THEMES.forEach(function(x){m.classList.remove('th-'+x);});
@@ -920,8 +931,8 @@ function tapeProgress(frac){
 
 function thunk(){var b=document.querySelector('.mymy .body');b.classList.remove('thunk');void b.offsetWidth;b.classList.add('thunk');}
 var quietDoor=false;
-async function openDoor(){var d=$('door');d.classList.remove('closing');if(!quietDoor)sDoor();d.classList.add('open');await wait(550);}
-async function closeDoor(){var d=$('door');d.classList.add('closing');d.classList.remove('open');await wait(370);if(!quietDoor)sClack();thunk();await wait(250);d.classList.remove('closing');}
+async function openDoor(){var d=$('door');d.classList.remove('closing');if(!quietDoor)sDoor();d.classList.add('open');await wait(300);}
+async function closeDoor(){var d=$('door');d.classList.add('closing');d.classList.remove('open');await wait(300);if(!quietDoor)sClack();thunk();await wait(80);d.classList.remove('closing');}
 async function insertTape(i,startIdx){
   busy=true;
   var cas=$('cas'),useMp3=SND.insert&&!SND.insert.bad;
@@ -933,7 +944,7 @@ async function insertTape(i,startIdx){
   cur=(typeof startIdx==='number')?startIdx:(filled(tapes[i])[0]||0);
   setReels(tapeProgress(0));renderRack();
   cas.classList.toggle('ck',tapeCol(tapes[i])==='ck');
-  cas.classList.remove('out');await wait(850);
+  cas.classList.remove('out');await wait(450);
   await closeDoor();
   quietDoor=false;busy=false;updateNow();
 }
