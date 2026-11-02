@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>유튜브 테이프</title>
-<!-- index 16번: Giftwav 이름 · 빨간 테두리 찜 하트 · 작은 재생 버튼 · 넣고 0.7초 뒤 재생 · 제목 물결 · 바퀴 오른쪽으로 · 노래 목록 버튼 접기 -->
+<!-- index 17번(2): 선물 링크·카톡 카드 주소를 giftwav.com으로 · 목록 ▶ 한 번 더 누르면 멈춤 · 휴대폰 뒤로 가기는 열린 창만 닫기 · 찜 테이프에 큰 빨간 하트 · 찜한 노래 1 처음부터 서랍에 · 카톡 카드 Giftwav -->
 <!-- 카톡·문자에 링크를 보내면 이 그림과 글이 카드로 보여요 -->
 <meta name="description" content="테이프 선물이 왔어요! 눌러서 마이마이로 들어 보세요.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="유튜브 테이프">
 <meta property="og:title" content="📼 테이프 선물이 왔어요!">
 <meta property="og:description" content="눌러서 마이마이로 들어 보세요 ♪">
-<meta property="og:image" content="https://kymhka100-byte.github.io/mytape/tape-card.png?v=16">
+<meta property="og:image" content="https://giftwav.com/tape-card.png?v=17">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="600">
-<meta property="og:url" content="https://kymhka100-byte.github.io/mytape/">
+<meta property="og:url" content="https://giftwav.com/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kymhka100-byte.github.io/mytape/tape-card.png?v=16">
+<meta name="twitter:image" content="https://giftwav.com/tape-card.png?v=17">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap">
 <style>
@@ -597,6 +597,16 @@ html,body{background:var(--bg)!important;color:var(--fg)}
 /* 노래 목록 버튼 접기 */
 .foldbtn{flex:0 0 auto;font-size:13px;font-weight:800;padding:5px 10px;border-radius:14px;border:1px solid var(--line);background:#24262c;color:var(--fg);cursor:pointer}
 .fold{margin-bottom:6px}
+/* ===== 17번 ===== */
+/* 찜 테이프: 하얀 테이프를 큰 빨간 하트가 감싸고, 가운데 바퀴 창만 뚫려 있어요 */
+.cassette.ch{background:#f6f6f4;border-color:#b5b5b0}
+.cassette.ch .trap{background:#d4d4cf}
+.cassette.ch::after{content:"";position:absolute;inset:-2px;z-index:3;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 153 100' preserveAspectRatio='none'%3E%3Cpath fill='%23e8323c' stroke='%23a3141e' stroke-width='1.2' fill-rule='evenodd' d='M76.5 22C66 3 30-2 12 9-4 21 3 52 30 71L76.5 99 123 71C150 52 157 21 141 9 123-2 87 3 76.5 22ZM45 39H108Q115 39 115 46V63Q115 70 108 70H45Q38 70 38 63V46Q38 39 45 39Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.cassette.ch .cas-side{display:none}
+.cassette.ch .cas-label{z-index:4;background:none;border-top:0;top:20%;height:17%;padding:0 8px}
+.cassette.ch .cas-label span{color:#fff;font-size:24px;text-shadow:0 1px 2px #7a1018}
+.cassette.ch .win{z-index:4}
 </style>
 </head>
 <body>
@@ -749,7 +759,6 @@ html,body{background:var(--bg)!important;color:var(--fg)}
       <button class="pbtn" id="gPlayV" hidden>▶ 들어 보기</button>
     </div>
     <p id="gVoiceNote" style="font-size:13px;margin:0">"생일 축하해" 같은 한마디를 10초까지 녹음해요. 지금은 이 휴대폰에만 저장되고, 친구에게 보내는 기능은 다음에 추가돼요.</p>
-    <input id="giftOut" readonly hidden>
     <div class="popbtns" style="grid-template-columns:1fr"><button class="pbtn back" id="gClose">닫기</button></div>
   </div>
 </div>
@@ -872,6 +881,7 @@ function load(){
     if(typeof t.slot!=='number'||used[t.slot])t.slot=freeSlot(used);
     used[t.slot]=1;
   });
+  if(!tapes.some(function(t){return t.like;})){var lt=blankTape('찜한 노래 1',freeSlot(used));lt.like=true;lt.likeNo=1;tapes.push(lt);}
 }
 function freeSlot(used){if(!used){used={};tapes.forEach(function(t){used[t.slot]=1;});}var s=0;while(used[s])s++;return s;}
 function save(){try{localStorage.setItem(KEY,JSON.stringify({tapes:tapes,ti:ti}));}catch(e){}}
@@ -1441,7 +1451,7 @@ function markSongs(){
     var on=playing&&loaded===ti&&cur===j;
     var row=$('song'+j),b=$('sp'+j);
     if(row)row.classList.toggle('on',on);
-    if(b){b.classList.toggle('on',on);b.textContent=on?'♪':'▶';}
+    if(b){b.classList.toggle('on',on);b.textContent=on?'♪':'▶';b.setAttribute('aria-label',(j+1)+'번 곡 '+(on?'멈추기':'재생'));}
   }
 }
 function setUrl(i,v){
@@ -1475,8 +1485,10 @@ $('songs').addEventListener('click',function(e){
     var sk=tapes[ti].songs[k];
     if(!playable(sk)){sClick();msg((k+1)+'번 칸은 비어 있어요. 노래를 먼저 담아 주세요.');return;}
     if(busy)return;
+    if(playing&&!adhoc&&loaded===ti&&cur===k){onStop();msg('⏸ '+(k+1)+'번 곡을 멈췄어요. ▶를 누르면 다시 나와요.');return;}
     if(loaded===ti){
       sClick();if(!canPlay(sk))return;
+      if(!playing&&!adhoc&&cur===k&&!embedBroken){onPlay();return;}
       if(embedBroken&&!isFile(sk)){cur=k;curKind='yt';startNow(tapes[ti],k);}else loadSong(k);
       cur=k;playingVisuals(true);setReels(tapeProgress(0));nudgeCheck();
     }else{insertAndPlay(ti,k);}
@@ -1752,7 +1764,6 @@ function renderLib(){
   }else{
     var idx=libRows.map(function(r,n){return n;});
     idx.sort(function(a,b){var A=libRows[a],B=libRows[b];return libSort==='title'?cmp(A.song,B.song):(cmp(A.artist||'힣',B.artist||'힣')||cmp(A.song,B.song));});
-    var lastA=null;
     idx.forEach(function(n,j){var r=libRows[n];h+=row(r,n,j+1);});
   }
   $('libList').innerHTML=h;
@@ -1839,14 +1850,14 @@ function playAdhoc(r){
 /* ---------- 선물하기 ---------- */
 function b64e(s){return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
 function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return decodeURIComponent(escape(atob(s)));}
-var giftLink='',giftName='',giftIdx=-1;
+var giftLink='',giftIdx=-1;
 function giftList(t){return filled(t).filter(function(k){return !isFile(t.songs[k]);});}
 /* 선물 주소는 카카오에 등록한 주소로 고정해요 (카드를 눌렀을 때 열리게) */
-var GIFT_BASE='https://kymhka100-byte.github.io/mytape/';
-function giftBase(){return location.hostname==='kymhka100-byte.github.io'?GIFT_BASE:(location.origin+location.pathname);}
+var GIFT_BASE='https://giftwav.com/';
+function giftBase(){return /(^|\.)giftwav\.com$|github\.io$/.test(location.hostname)?GIFT_BASE:(location.origin+location.pathname);}
 function makeGiftLink(t,name,memo){return giftBase()+'?t='+b64e(name)+'.'+giftList(t).map(function(k){return idOf(t.songs[k].url);}).join('')+(memo?'&m='+b64e(memo):'');}
 /* 카카오톡 공유 (카드 + "테이프 받기" 버튼) */
-var KAKAO_KEY='8a4ef242c470c1e15ab9eea448f34e8c',CARD_IMG='https://kymhka100-byte.github.io/mytape/tape-card.png?v=16',kakaoP=null;
+var KAKAO_KEY='8a4ef242c470c1e15ab9eea448f34e8c',CARD_IMG='https://giftwav.com/tape-card.png?v=17',kakaoP=null;
 function kakaoLoad(){
   if(kakaoP)return kakaoP;
   kakaoP=new Promise(function(res,rej){
@@ -1917,7 +1928,7 @@ $('gShare').addEventListener('click',function(){
   if(giftIdx<0)return;
   if(LOCAL){msg('선물하기는 인터넷 주소(GitHub)에서 열었을 때만 돼요.');return;}
   var t=tapes[giftIdx],name=($('gTitle').value||'').trim()||t.name,memo=($('gMemo').value||'').trim();
-  giftName=name;giftLink=makeGiftLink(t,name,memo);$('giftOut').value=giftLink;
+  giftLink=makeGiftLink(t,name,memo);
   /* 1) 카카오 카드로 보내기 (긴 주소가 안 보여요) */
   if(!canGift())return;
   if(kakaoSend(name,memo,giftLink)){useGift();$('giftWrap').classList.remove('show');msg('💬 카톡이 열려요. 친구를 고르면 테이프 카드가 가요!');return;}
@@ -2158,6 +2169,33 @@ document.addEventListener('click',function(e){
   setTimeout(function(){b.classList.remove('lit');},450);
 },true);
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){closePop();$('giftWrap').classList.remove('show');if($('guideWrap').classList.contains('show'))closeGuide();}});
+
+/* ---------- 휴대폰 뒤로 가기 ----------
+   창(노래 찾기·선물하기·목록 만들기 등)이 열리면 뒤로 가기 한 칸을 만들어 둬요.
+   뒤로 가기를 누르면 맨 위 창만 닫히고, 창이 없을 때만 앱에서 나가요 */
+var OV_CLOSE={popWrap:'pBack',giftWrap:'gClose',adminWrap:'admClose',qgWrap:'qgClose',libWrap:'libClose',findWrap:'findClose',pickWrap:'pickClose',guideWrap:'gSkip'};
+var ovStack=[],ovPushed=0,ovSkip=0,ovT=null;
+function ovSync(){
+  ovT=null;
+  var n=ovStack.length;
+  if(n>ovPushed){for(;ovPushed<n;ovPushed++){try{history.pushState({ov:ovPushed+1},'');}catch(e){}}}
+  else if(n<ovPushed){var k=ovPushed-n;ovPushed=n;ovSkip++;try{history.go(-k);}catch(e){ovSkip--;}}
+}
+Array.prototype.forEach.call(document.querySelectorAll('.overlay'),function(o){
+  new MutationObserver(function(){
+    var on=o.classList.contains('show'),at=ovStack.indexOf(o.id);
+    if(on&&at<0)ovStack.push(o.id);else if(!on&&at>=0)ovStack.splice(at,1);else return;
+    if(!ovT)ovT=setTimeout(ovSync,0);
+  }).observe(o,{attributes:true,attributeFilter:['class']});
+});
+window.addEventListener('popstate',function(){
+  if(ovSkip){ovSkip--;return;}
+  if(ovPushed>0)ovPushed--;
+  var id=ovStack[ovStack.length-1];if(!id)return;
+  ovStack.pop();
+  var b=OV_CLOSE[id]&&$(OV_CLOSE[id]);
+  if(b)b.click();else $(id).classList.remove('show');
+});
 
 /* ---------- 시작 ---------- */
 (function(){var th=null;try{th=localStorage.getItem(THEME_KEY);}catch(e){}setTheme(th||'white');})();
