@@ -4,20 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>유튜브 테이프</title>
-<!-- index 17번(2): 선물 링크·카톡 카드 주소를 giftwav.com으로 · 목록 ▶ 한 번 더 누르면 멈춤 · 휴대폰 뒤로 가기는 열린 창만 닫기 · 찜 테이프에 큰 빨간 하트 · 찜한 노래 1 처음부터 서랍에 · 카톡 카드 Giftwav -->
+<title>Wave 2 Tape</title>
+<!-- index 19번: 찜 번호·찜 담긴 테이프 반짝 · 선물 숫자 붙이기 · 시간 숫자 진하게 · 컴퓨터 고대비에서도 그림 · 테이프 색 따라 몸통 색 · 서랍에서 누르면 바로 넣고 0.5초 뒤 재생 · 노래 목록 배치 | 18번: Firebase 연결(선물 목소리가 친구에게 · 남은 선물 수 저장) · 제목 Wave 2 Tape · by Giftwav · 선물 주소 GitHub로 되돌림 | 17번: 목록 ▶ 한 번 더 누르면 멈춤 · 휴대폰 뒤로 가기는 열린 창만 닫기 · 찜 테이프에 큰 빨간 하트 · 찜한 노래 1 처음부터 서랍에 · 카톡 카드 Giftwav -->
 <!-- 카톡·문자에 링크를 보내면 이 그림과 글이 카드로 보여요 -->
 <meta name="description" content="테이프 선물이 왔어요! 눌러서 마이마이로 들어 보세요.">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="유튜브 테이프">
+<meta property="og:site_name" content="Wave 2 Tape">
 <meta property="og:title" content="📼 테이프 선물이 왔어요!">
 <meta property="og:description" content="눌러서 마이마이로 들어 보세요 ♪">
-<meta property="og:image" content="https://giftwav.com/tape-card.png?v=17">
+<meta property="og:image" content="https://kymhka100-byte.github.io/mytape/tape-card.png?v=18">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="600">
-<meta property="og:url" content="https://giftwav.com/">
+<meta property="og:url" content="https://kymhka100-byte.github.io/mytape/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://giftwav.com/tape-card.png?v=17">
+<meta name="twitter:image" content="https://kymhka100-byte.github.io/mytape/tape-card.png?v=18">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap">
 <style>
@@ -230,26 +230,14 @@ h1{font-size:19px;margin:10px 0 8px;text-align:center;letter-spacing:1px}
 .hole.indeck{border-style:solid;border-color:var(--sky2);color:var(--sky2)}
 .slotc:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
 
-/* 튀어나온 테이프 */
+/* 창(오버레이) */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:50;display:none;align-items:center;justify-content:center;
   padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
 .overlay.show{display:flex}
-.pop{width:min(400px,100%);animation:popin .35s cubic-bezier(.2,.9,.3,1.2)}
-@keyframes popin{from{transform:translateY(40%) scale(.35);opacity:0}to{transform:none;opacity:1}}
-.bigtape{background:linear-gradient(#30333a,#17181c);border:3px solid #55585f;border-radius:14px;padding:14px}
-.bigtape .paper{background:var(--paper);border-radius:6px;border-top:7px solid var(--stripe);padding:8px 12px 10px;color:var(--penblue)}
-.bigtape .tname{font-family:var(--pen);font-size:34px;text-align:center;line-height:1.1;border-bottom:2px solid #c9bfa6;padding-bottom:4px;margin-bottom:6px;word-break:keep-all}
-.tracks{list-style:none;margin:0;padding:0;font-family:var(--pen);font-size:24px;line-height:1.25;max-height:42vh;overflow:auto}
-.tracks li{display:flex;gap:8px;border-bottom:1px dashed #d8cfb6}
-.tracks li b{width:28px;flex:0 0 auto;text-align:right;color:var(--stripe);font-weight:400}
-.tracks li span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.tracks .none{color:#9a8f73;justify-content:center}
 .mini-win{display:flex;justify-content:space-between;align-items:center;margin:12px 22% 0;padding:8px 14px;background:#0c0c0e;border:2px solid #5b5e66;border-radius:30px}
 .mini-win i{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle,#0c0c0e 0 22%,transparent 23%),repeating-conic-gradient(#eee 0 22deg,#999 22deg 60deg)}
 .popbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
 .pbtn{font-size:18px;font-weight:900;padding:14px 8px;border:0;border-radius:10px;cursor:pointer;background:var(--fg);color:#000}
-.pbtn.go{background:var(--sky);color:#fff}
-.pbtn.gift2{background:var(--yel)}
 .pbtn.back{background:#2a2a2a;color:#fff;border:2px solid #fff}
 .pbtn:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
 
@@ -316,7 +304,7 @@ h1{font-size:19px;margin:10px 0 8px;text-align:center;letter-spacing:1px}
 .mv button{width:32px;height:30px;border:1px solid #fff;border-radius:6px;background:#1c1c1c;color:#fff;font-size:14px;cursor:pointer;padding:0}
 .mv button:disabled{opacity:.25}
 .addsong{width:100%;margin-top:6px;padding:12px;font-size:17px;font-weight:900;border:2px dashed var(--fg);border-radius:10px;background:#111;color:#fff;cursor:pointer}
-@media (prefers-reduced-motion:reduce){.hub.spin,.hub.fast{animation-duration:6s}.door,.cassette{transition-duration:.01s}.pop{animation:none}}
+@media (prefers-reduced-motion:reduce){.hub.spin,.hub.fast{animation-duration:6s}.door,.cassette{transition-duration:.01s}}
 #cover{position:absolute;inset:0;z-index:3;display:none;align-items:center;justify-content:center;background:#111;color:#fff;font-size:18px;font-weight:800}
 #cover.show{display:flex}
 .tirow{display:flex;gap:4px}
@@ -325,11 +313,11 @@ h1{font-size:19px;margin:10px 0 8px;text-align:center;letter-spacing:1px}
 .mic.on{background:var(--sky);border-color:var(--sky2);box-shadow:0 0 10px var(--sky);animation:blink .8s infinite}
 .nomic .mic{display:none}
 .btn.blink{background:var(--sky);color:#fff;animation:blink .5s steps(2) 6}
-/* 서랍·튀어나온 테이프·선물 창의 하양/먹색 테이프 */
+/* 선물 창의 하양/먹색 테이프 */
 .spine.cw{background:linear-gradient(#ffffff,#e4e3de);box-shadow:0 3px 0 #000,inset 0 1px 0 #fff}
 .spine.ck{background:linear-gradient(#4a4c52,#34363b)}
-.bigtape.cw,.gtape.cw{background:linear-gradient(#ffffff,#e2e1dc);border-color:#b5b5b0}
-.bigtape.ck,.gtape.ck{background:linear-gradient(#4a4c52,#303237);border-color:#1b1c1e}
+.gtape.cw{background:linear-gradient(#ffffff,#e2e1dc);border-color:#b5b5b0}
+.gtape.ck{background:linear-gradient(#4a4c52,#303237);border-color:#1b1c1e}
 .mini-win{background:#1c1d20}
 .sheet .memo{width:100%;font-size:17px;padding:10px;background:#000;color:#fff;border:2px solid var(--yel);border-radius:8px;margin:6px 0 2px;font-family:inherit}
 .gcopy{margin-top:8px;font-size:15px;padding:10px}
@@ -572,7 +560,7 @@ html,body{background:var(--bg)!important;color:var(--fg)}
 .spine .hrt b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;padding-bottom:3px}
 .cassette.ch{background:linear-gradient(#e2434b,#b5232c);border-color:#7a1018}
 .cassette.ch .trap{background:#8f1a22}
-.bigtape.ch,.gtape.ch{background:linear-gradient(#e2434b,#a91f28);border-color:#7a1018}
+.gtape.ch{background:linear-gradient(#e2434b,#a91f28);border-color:#7a1018}
 .sleepbtn{flex:0 0 auto;margin-left:6px;padding:2px 8px;font-size:12px;line-height:1.3;background:rgba(0,0,0,.06);color:var(--sub);border:1px solid rgba(0,0,0,.12);border-radius:10px;opacity:.8;cursor:pointer}
 .sleepbtn.on{background:#1b2b3a;color:#bfe9ff;border-color:#4f7fa6;opacity:1}
 #giftWrap .qicons{margin:10px 0 6px}
@@ -607,11 +595,41 @@ html,body{background:var(--bg)!important;color:var(--fg)}
 .cassette.ch .cas-label{z-index:4;background:none;border-top:0;top:20%;height:17%;padding:0 8px}
 .cassette.ch .cas-label span{color:#fff;font-size:24px;text-shadow:0 1px 2px #7a1018}
 .cassette.ch .win{z-index:4}
+/* ===== 19번 ===== */
+/* 컴퓨터 고대비(대비 테마)가 켜져 있어도 마이마이 그림이 그대로 나오게 */
+:root{forced-color-adjust:none;--play:#4fc0ff}
+/* 검정 몸통 (먹색 테이프를 넣으면 이 색) */
+.mymy.th-black{--b1:#4a4d53;--b2:#26282c;--bd:#0d0e10;--ink:#f2f2f2;--sub:#c3c7cd;--k1:#6c7077;--k2:#53575d;--k3:#3c3f44;--kd:#0d0e10}
+/* 선물상자 숫자: 상자 오른쪽 위에 살짝 겹치게 */
+.gcount{right:-2px!important;top:-3px!important}
+/* 시간 숫자: 예전보다 약간만 흐리게 */
+.topbar .counter{opacity:.85!important;color:var(--ink)!important;font-weight:700}
+/* 재생 파란색 통일 (마이마이 재생 버튼 · 전원 LED · 서랍 불 · 목록 재생) */
+.key:active,.key.down,.key.lit{background:linear-gradient(#f0faff,#a6e0ff 55%,var(--play))!important;box-shadow:inset 0 2px 5px rgba(0,60,110,.35),0 0 14px 4px rgba(79,192,255,.9)!important}
+.dlamp.on{background:var(--play)}
+.song.on{border:2px solid var(--play)!important;background:#0f2a40}
+/* 노래 목록: 오른쪽에 재생 삼각형(번호는 오른쪽 위), 하트는 그 밑 */
+.song .f{flex:1 1 auto;min-width:0}
+.song .lead{position:relative;width:34px;gap:8px;padding-top:4px}
+.sp{width:30px!important;height:30px!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;
+  color:#6b6e75!important;padding:0;transform:none!important;display:flex;align-items:center;justify-content:center}
+.sp svg{width:24px;height:24px}
+.sp:active{background:none!important;color:var(--play)!important}
+.sp.on{color:var(--play)!important;filter:drop-shadow(0 0 6px rgba(79,192,255,.95))}
+.song .lead .num{position:absolute;right:-5px;top:-3px;font-size:10px;font-weight:800;color:var(--dim)}
+.lk{position:relative}
+/* 찜 번호: 하트 위에 조그맣게 */
+.likebtn,.lk{position:relative;overflow:visible}
+.lkn{position:absolute;left:50%;top:-7px;transform:translateX(-50%);font-style:normal;font-size:9px;font-weight:900;line-height:1;
+  color:#fff;background:#e8323c;border-radius:6px;padding:1px 3px;-webkit-text-stroke:0;pointer-events:none}
+/* 찜이 담긴 테이프: 서랍에서 4초 반짝 */
+.slotc.flash{animation:lkflash .8s ease-in-out 5;border-radius:6px}
+@keyframes lkflash{50%{box-shadow:0 0 0 3px #ff4a55,0 0 16px 6px rgba(255,74,85,.85)}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>📼 유튜브 테이프</h1>
+  <h1>📼 Wave 2 Tape</h1>
 
   <div class="screen">
     <div id="player"></div>
@@ -661,7 +679,7 @@ html,body{background:var(--bg)!important;color:var(--fg)}
           <div class="dnow"><button class="likebtn" id="kLike" aria-label="이 노래 찜하기">♥</button><span id="now">테이프가 비어 있어요</span></div>
         </div>
       </div>
-      <div class="foot"><button class="searchbtn" id="bFindDeck" aria-label="노래 검색">🔍</button><button class="sleepbtn" id="kSleep" aria-label="잠자기 타이머">☾</button><span class="sp1"></span><button class="tbtn" id="kNT" aria-label="다음 테이프">N-T<small>다음 테이프</small></button><button class="tbtn" id="kRT" aria-label="랜덤 테이프">R-T<small>랜덤</small></button><span class="kym">Giftwav</span></div>
+      <div class="foot"><button class="searchbtn" id="bFindDeck" aria-label="노래 검색">🔍</button><button class="sleepbtn" id="kSleep" aria-label="잠자기 타이머">☾</button><span class="sp1"></span><button class="tbtn" id="kNT" aria-label="다음 테이프">N-T<small>다음 테이프</small></button><button class="tbtn" id="kRT" aria-label="랜덤 테이프">R-T<small>랜덤</small></button><span class="kym">by Giftwav</span></div>
     </div>
   </div>
 
@@ -714,21 +732,6 @@ html,body{background:var(--bg)!important;color:var(--fg)}
 
 <audio id="aud" preload="auto"></audio>
 <div id="msg" role="status" aria-live="polite"></div>
-<!-- 꽂이에서 튀어나온 테이프 -->
-<div class="overlay" id="popWrap">
-  <div class="pop" role="dialog" aria-modal="true" aria-labelledby="popName">
-    <div class="bigtape" id="popTape">
-      <div class="paper"><div class="tname" id="popName">테이프</div><ol class="tracks" id="popTracks"></ol></div>
-      <div class="mini-win"><i></i><i></i></div>
-    </div>
-    <div class="popbtns">
-      <button class="pbtn go" id="pInsert">▶ 넣기</button>
-      <button class="pbtn gift2" id="pGift">🎁 선물하기</button>
-      <button class="pbtn" id="pEdit">＋ 노래 담기</button>
-      <button class="pbtn back" id="pBack">다시 꽂기</button>
-    </div>
-  </div>
-</div>
 
 <!-- 선물하기 -->
 <div class="overlay" id="giftWrap">
@@ -758,7 +761,7 @@ html,body{background:var(--bg)!important;color:var(--fg)}
       <button class="pbtn rec" id="gRec">🎙 목소리 한마디 녹음</button>
       <button class="pbtn" id="gPlayV" hidden>▶ 들어 보기</button>
     </div>
-    <p id="gVoiceNote" style="font-size:13px;margin:0">"생일 축하해" 같은 한마디를 10초까지 녹음해요. 지금은 이 휴대폰에만 저장되고, 친구에게 보내는 기능은 다음에 추가돼요.</p>
+    <p id="gVoiceNote" style="font-size:13px;margin:0">"생일 축하해" 같은 한마디를 10초까지 녹음해요. 선물과 같이 가서, 친구가 테이프를 넣으면 노래 전에 먼저 나와요.</p>
     <div class="popbtns" style="grid-template-columns:1fr"><button class="pbtn back" id="gClose">닫기</button></div>
   </div>
 </div>
@@ -867,7 +870,7 @@ function blankSongs(n){var s=[];for(var i=0;i<(n||10);i++)s.push({url:'',title:'
 function blankTape(n,slot){return {name:n,slot:slot,songs:blankSongs(10)};}
 function sampleTape(){var t=blankTape(SAMPLE.name,0);SAMPLE.songs.forEach(function(x,i){t.songs[i]={url:x[0],title:x[1]};});return t;}
 
-var tapes=[],ti=0,loaded=-1,cur=0,playing=false,player=null,ready=false,wakeLock=null,busy=false,gifted=false,page=0,popIdx=-1;
+var tapes=[],ti=0,loaded=-1,cur=0,playing=false,player=null,ready=false,wakeLock=null,busy=false,gifted=false,page=0;
 var LOCAL=!/^https?:$/.test(location.protocol);
 var embedBroken=LOCAL;
 
@@ -925,7 +928,6 @@ function burst(when,dur,freq,pow,gain,type){
 function sClick(){burst(0,.025,3200,6,.9);}
 function sClack(){burst(0,.05,2200,5,1.5);burst(.11,.06,900,3,1.5);}
 function sDoor(){burst(0,.15,500,2,1.1,'lowpass');burst(.02,.05,1800,4,.6);}
-function sPop(){burst(0,.04,1400,4,1.0);burst(.06,.08,700,3,.8,'lowpass');}
 function sWhirr(){
   var c=actx();if(!c)return;var t=c.currentTime;
   var o=c.createOscillator(),g=c.createGain(),f=c.createBiquadFilter();
@@ -965,8 +967,8 @@ function renderPlate(){
   if(L.length>from+5)h+='<p class="more">… 모두 '+L.length+'곡</p>';
   el.innerHTML=h;
 }
-/* 몸통 색 바꾸기: 하양 → 파랑 → 빨강 → 노랑 → 실버 메탈 */
-var THEMES=['white','blue','red','yellow','metal'],THEME_NAME={white:'하양',blue:'파랑',red:'빨강',yellow:'노랑',metal:'실버 메탈'},THEME_KEY='mymyTheme';
+/* 몸통 색 바꾸기: 하양 → 검정 → 파랑 → 빨강 → 노랑 → 실버 메탈 (테이프를 넣으면 테이프 색에 맞춰 저절로 바뀌어요) */
+var THEMES=['white','black','blue','red','yellow','metal'],THEME_NAME={white:'하양',black:'검정',blue:'파랑',red:'빨강',yellow:'노랑',metal:'실버 메탈'},THEME_KEY='mymyTheme';
 /* 전광판 글: NOTICE에 글을 넣으면 그 글이 흘러가요 (나중에 Firebase 긴급 공지가 여기로 와요) */
 var NOTICE='';
 function setBoard(text){
@@ -987,6 +989,7 @@ function setTheme(n){
   try{localStorage.setItem(THEME_KEY,n);}catch(e){}
   renderPlate();return n;
 }
+function autoTheme(t){var c=tapeCol(t);setTheme(c==='ck'?'black':c==='ch'?'red':'white');}
 function curTheme(){var m=$('mymy');for(var i=0;i<THEMES.length;i++)if(m.classList.contains('th-'+THEMES[i]))return THEMES[i];return 'white';}
 /* 테이프 색: 하양(cw) · 먹색(ck) — 꽂이 칸 번호에 따라 번갈아요 */
 function tapeCol(t){if(t&&t.like)return 'ch';return t&&t.color?t.color:((t&&t.slot%2)?'ck':'cw');}
@@ -998,7 +1001,16 @@ function curLikeSong(){
   var t=loaded>=0?tapes[loaded]:null,s=t?t.songs[cur]:null,id=s?idOf(s.url):null;
   return id?{id:id,title:s.title||''}:null;
 }
-function showLike(){var b=$('kLike');if(!b)return;var c=curLikeSong();b.hidden=!c;if(!c)return;var on=isLiked(c.id);b.classList.toggle('on',on);b.setAttribute('aria-label',on?'찜 빼기':'이 노래 찜하기');}
+/* 몇 번째 찜인지: 찜한 노래 1 → 2 … 테이프 순서대로 센 번호 */
+function likeNum(id){var n=0,f=0;if(!id)return 0;likeTapes().forEach(function(t){filled(t).forEach(function(k){n++;if(!f&&idOf(t.songs[k].url)===id)f=n;});});return f;}
+function heartHtml(id){var n=likeNum(id);return '♥'+(n?'<i class="lkn">'+n+'</i>':'');}
+function showLike(){var b=$('kLike');if(!b)return;var c=curLikeSong();b.hidden=!c;if(!c)return;var on=isLiked(c.id);b.classList.toggle('on',on);b.innerHTML=heartHtml(on?c.id:null);b.setAttribute('aria-label',on?likeNum(c.id)+'번째 찜, 찜 빼기':'이 노래 찜하기');}
+/* 찜하면 서랍을 열고 담긴 테이프를 4초 동안 반짝여요 */
+var likeFlash=-1,likeFlashT=null;
+function flashLikeTape(t){
+  likeFlash=tapes.indexOf(t);page=Math.floor(t.slot/PER_PAGE);setDrawer(true);renderRack();
+  clearTimeout(likeFlashT);likeFlashT=setTimeout(function(){likeFlash=-1;renderRack();},4000);
+}
 function toggleLike(id,title){
   if(!id){msg('이 칸은 찜할 노래가 없어요.');return;}
   sClick();
@@ -1009,8 +1021,8 @@ function toggleLike(id,title){
   for(var i=0;i<L.length&&!tgt;i++){if(filled(L[i]).length<10){tgt=L[i];for(var k=0;k<L[i].songs.length;k++)if(!playable(L[i].songs[k])){slot=k;break;}if(slot<0){L[i].songs.push({url:'',title:''});slot=L[i].songs.length-1;}}}
   if(!tgt){var no=(L.length?(L[L.length-1].likeNo||L.length):0)+1;tgt=blankTape('찜한 노래 '+no,freeSlot());tgt.like=true;tgt.likeNo=no;tapes.push(tgt);slot=0;}
   tgt.songs[slot]={url:'https://www.youtube.com/watch?v='+id,title:title||''};
-  save();renderRack();renderList();showLike();
-  msg('♥ "'+tgt.name+'"에 담았어요. ('+filled(tgt).length+'/10)');
+  save();renderList();showLike();flashLikeTape(tgt);
+  msg('♥ '+likeNum(id)+'번째 찜 · 서랍의 "'+tgt.name+'" 테이프에 담았어요 ('+filled(tgt).length+'/10)');
 }
 /* 노래 목록 위 버튼들: 평소엔 접어 두고 "펼치기"로 열어요 */
 $('bFold').addEventListener('click',function(){
@@ -1058,7 +1070,7 @@ async function insertTape(i,startIdx){
   $('now').textContent='📼 테이프를 넣고 있어요…';
   await openDoor();
   if(loaded>=0&&!cas.classList.contains('out')){cas.classList.add('out');await wait(900);}
-  loaded=i;$('cl').textContent=tapes[i].name;
+  loaded=i;$('cl').textContent=tapes[i].name;autoTheme(tapes[i]);
   cur=(typeof startIdx==='number')?startIdx:(filled(tapes[i])[0]||0);
   setReels(tapeProgress(0));renderRack();
   cas.classList.toggle('ck',tapeCol(tapes[i])==='ck');cas.classList.toggle('ch',tapeCol(tapes[i])==='ch');
@@ -1191,7 +1203,8 @@ async function onPlay(){
     keyDown('kPlay',true);
     primeNow(t,first);
     await insertTape(target,first);
-    await wait(700);
+    await wait(500);
+    await giftVoice(target);
     releaseNow();
     if(embedBroken&&!isFile(t.songs[first]))msg('유튜브에서 노래가 차례로 나와요.');
   }else{
@@ -1228,7 +1241,8 @@ async function insertAndPlay(i,startIdx){
   primeNow(t,startIdx);
   keyDown('kPlay',true);
   await insertTape(i,startIdx);
-  await wait(700);
+  await wait(500);
+  await giftVoice(i);
   releaseNow();
   playingVisuals(true);nudgeCheck();
 }
@@ -1359,8 +1373,8 @@ function renderRack(){
     for(var c=0;c<3;c++){
       var s=page*PER_PAGE+r*3+c,i=tapeAtSlot(s);
       if(i<0)h+='<button class="slotc" data-slot="'+s+'" aria-label="빈칸, 새 테이프 만들기"><div class="hole">＋<br>빈칸</div></button>';
-      else if(i===loaded)h+='<button class="slotc" data-tape="'+i+'" aria-label="'+esc(tapes[i].name)+', 마이마이에 들어 있음"><div class="hole indeck">▶ 마이마이<br>속에 있어요</div></button>';
-      else if(tapes[i].like)h+='<button class="slotc" data-tape="'+i+'" aria-label="'+esc(tapes[i].name)+'"><div class="spine ch"><span class="hrt"><b>'+(tapes[i].likeNo||1)+'</b></span><span class="nm">찜한 노래</span></div></button>';
+      else if(i===loaded)h+='<button class="slotc'+(i===likeFlash?' flash':'')+'" data-tape="'+i+'" aria-label="'+esc(tapes[i].name)+', 마이마이에 들어 있음"><div class="hole indeck">▶ 마이마이<br>속에 있어요</div></button>';
+      else if(tapes[i].like)h+='<button class="slotc'+(i===likeFlash?' flash':'')+'" data-tape="'+i+'" aria-label="'+esc(tapes[i].name)+'"><div class="spine ch"><span class="hrt"><b>'+(tapes[i].likeNo||1)+'</b></span><span class="nm">찜한 노래</span></div></button>';
       else h+='<button class="slotc" data-tape="'+i+'" aria-label="'+esc(tapes[i].name)+'"><div class="spine '+tapeCol(tapes[i])+'"><span class="nm">'+esc(tapes[i].name)+'</span></div></button>';
     }
     h+='</div>';
@@ -1383,41 +1397,21 @@ $('rack').addEventListener('click',function(e){
   var b=e.target.closest('.slotc');if(!b)return;
   if(b.dataset.slot!==undefined){
     var s=+b.dataset.slot,t=blankTape((s+1)+'번 테이프',s);
-    tapes.push(t);save();renderRack();openPop(tapes.length-1);
-    msg('새 테이프를 꺼냈어요. ＋ 노래 담기를 눌러 노래를 담아 주세요.');
+    tapes.push(t);ti=tapes.length-1;save();renderRack();renderList();setDrawer(false);sClick();goEdit();
     return;
   }
-  openPop(+b.dataset.tape);
-});
-
-/* 튀어나온 테이프 */
-function openPop(i){
-  actx();sPop();popIdx=i;
-  var t=tapes[i],L=filled(t),h='';
-  $('popName').textContent=t.name;
-  $('popTape').className='bigtape '+tapeCol(t);
-  if(!L.length)h='<li class="none">아직 노래가 없어요</li>';
-  else L.forEach(function(k,n){h+='<li><b>'+(n+1)+'.</b><span>'+(isFile(t.songs[k])?'🎵 ':'')+esc(t.songs[k].title||('유튜브 곡 '+(k+1)))+'</span></li>';});
-  $('popTracks').innerHTML=h;
-  $('pInsert').textContent=i===loaded?'이미 들어 있어요':'▶ 넣기';
-  $('pInsert').disabled=i===loaded;
-  $('popWrap').classList.add('show');
-  setTimeout(function(){$('pBack').focus();},50);
-}
-function closePop(){$('popWrap').classList.remove('show');popIdx=-1;}
-$('pBack').addEventListener('click',function(){sClick();closePop();});
-$('popWrap').addEventListener('click',function(e){if(e.target===this)closePop();});
-$('pInsert').addEventListener('click',function(){
-  var i=popIdx;closePop();if(i<0)return;
-  ti=i;save();renderList();
-  setDrawer(false);
+  /* 테이프를 누르면 창 없이 바로 마이마이에 들어가고 0.5초 뒤 재생 */
+  var i=+b.dataset.tape;actx();
+  if(i===loaded){sClick();if(!playing&&!busy)onPlay();return;}
+  if(busy)return;
+  ti=i;save();renderList();setDrawer(false);
   document.querySelector('.mymy').scrollIntoView({behavior:'smooth',block:'center'});
   insertAndPlay(i);
 });
-$('pGift').addEventListener('click',function(){var i=popIdx;closePop();openGift(i);});
-$('pEdit').addEventListener('click',function(){var i=popIdx;closePop();sClick();ti=i;save();renderList();goEdit();});
+
 
 /* ---------- 노래 목록 ---------- */
+var TRI='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3.5L16.5 10 5 16.5z" fill="currentColor"/></svg>';
 function renderList(){
   var t=tapes[ti];
   $('tname').value=t.name;$('listName').textContent='📼 '+t.name+' 속 노래';
@@ -1426,21 +1420,23 @@ function renderList(){
   for(var i=0;i<n;i++){
     var s=t.songs[i];
     var file=isFile(s),bad=!file&&s.bad;
+    var lid=idOf(s.url),lon=isLiked(lid);
     h+='<div class="song'+(bad?' bad':'')+'" id="song'+i+'">'+
-      '<div class="lead"><button class="sp" id="sp'+i+'" data-play="'+i+'" aria-label="'+(i+1)+'번 곡 재생">▶</button><span class="numrow">'+
-        (idOf(s.url)?'<button class="lk'+(isLiked(idOf(s.url))?' on':'')+'" data-like="'+i+'" aria-label="'+(i+1)+'번 곡 찜하기">♥</button>':'')+
-        '<span class="num">'+(i+1)+'</span></span></div>'+
+      '<div class="mv"><button data-up="'+i+'" aria-label="'+(i+1)+'번 위로"'+(i===0?' disabled':'')+'>▲</button>'+
+      '<button class="del" data-del="'+i+'" aria-label="'+(i+1)+'번 곡 지우기">✕</button>'+
+      '<button data-down="'+i+'" aria-label="'+(i+1)+'번 아래로"'+(i===n-1?' disabled':'')+'>▼</button></div>'+
+      '<div class="b">'+(file?'<button class="btn" data-unfile="'+i+'">빼기</button>'
+           :'<button class="btn" id="f'+i+'" data-find="'+i+'">찾기</button>'+
+            '<button class="btn" data-paste="'+i+'">붙여<br>넣기</button>')+'</div>'+
       '<div class="f"><div class="tirow"><input class="ti" id="t'+i+'" data-i="'+i+'" placeholder="노래 제목 (예: 조용필 허공)" value="'+esc(s.title)+'">'+
       (file?'':'<button class="mic" id="mic'+i+'" data-mic="'+i+'" aria-label="'+(i+1)+'번 제목 말로 넣기">🎤</button>')+'</div>'+
       (file?'<div class="filetag">📁 내 휴대폰 노래 · 선물엔 안 들어가요</div>'
            :'<input class="ur" id="u'+i+'" data-i="'+i+'" placeholder="유튜브 링크" value="'+esc(s.url)+'">')+
       (bad?'<div class="badnote">⚠ 막힌 영상이에요. 찾기로 다른 영상을 골라 주세요.</div>':'')+'</div>'+
-      '<div class="b">'+(file?'<button class="btn" data-unfile="'+i+'">빼기</button>'
-           :'<button class="btn" id="f'+i+'" data-find="'+i+'">찾기</button>'+
-            '<button class="btn" data-paste="'+i+'">붙여<br>넣기</button>')+'</div>'+
-      '<div class="mv"><button data-up="'+i+'" aria-label="'+(i+1)+'번 위로"'+(i===0?' disabled':'')+'>▲</button>'+
-      '<button class="del" data-del="'+i+'" aria-label="'+(i+1)+'번 곡 지우기">✕</button>'+
-      '<button data-down="'+i+'" aria-label="'+(i+1)+'번 아래로"'+(i===n-1?' disabled':'')+'>▼</button></div></div>';
+      '<div class="lead"><button class="sp" id="sp'+i+'" data-play="'+i+'" aria-label="'+(i+1)+'번 곡 재생">'+TRI+'</button>'+
+        '<span class="num">'+(i+1)+'</span>'+
+        (lid?'<button class="lk'+(lon?' on':'')+'" data-like="'+i+'" aria-label="'+(i+1)+'번 곡 찜하기">'+heartHtml(lon?lid:null)+'</button>':'')+
+      '</div></div>';
   }
   $('songs').innerHTML=h;
   markSongs();
@@ -1451,7 +1447,7 @@ function markSongs(){
     var on=playing&&loaded===ti&&cur===j;
     var row=$('song'+j),b=$('sp'+j);
     if(row)row.classList.toggle('on',on);
-    if(b){b.classList.toggle('on',on);b.textContent=on?'♪':'▶';b.setAttribute('aria-label',(j+1)+'번 곡 '+(on?'멈추기':'재생'));}
+    if(b){b.classList.toggle('on',on);b.setAttribute('aria-label',(j+1)+'번 곡 '+(on?'멈추기':'재생'));}
   }
 }
 function setUrl(i,v){
@@ -1853,11 +1849,11 @@ function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='='
 var giftLink='',giftIdx=-1;
 function giftList(t){return filled(t).filter(function(k){return !isFile(t.songs[k]);});}
 /* 선물 주소는 카카오에 등록한 주소로 고정해요 (카드를 눌렀을 때 열리게) */
-var GIFT_BASE='https://giftwav.com/';
-function giftBase(){return /(^|\.)giftwav\.com$|github\.io$/.test(location.hostname)?GIFT_BASE:(location.origin+location.pathname);}
-function makeGiftLink(t,name,memo){return giftBase()+'?t='+b64e(name)+'.'+giftList(t).map(function(k){return idOf(t.songs[k].url);}).join('')+(memo?'&m='+b64e(memo):'');}
+var GIFT_BASE='https://kymhka100-byte.github.io/mytape/';
+function giftBase(){var h=location.hostname;if(/(^|\.)giftwav\.com$/.test(h))return 'https://giftwav.com/';return /github\.io$/.test(h)?GIFT_BASE:(location.origin+location.pathname);}
+function makeGiftLink(t,name,memo){return giftBase()+'?t='+b64e(name)+'.'+giftList(t).map(function(k){return idOf(t.songs[k].url);}).join('')+(memo?'&m='+b64e(memo):'')+(t.hasVoice&&t.voiceId?'&v='+t.voiceId:'');}
 /* 카카오톡 공유 (카드 + "테이프 받기" 버튼) */
-var KAKAO_KEY='8a4ef242c470c1e15ab9eea448f34e8c',CARD_IMG='https://giftwav.com/tape-card.png?v=17',kakaoP=null;
+var KAKAO_KEY='8a4ef242c470c1e15ab9eea448f34e8c',CARD_IMG=giftBase()+'tape-card.png?v=18',kakaoP=null;
 function kakaoLoad(){
   if(kakaoP)return kakaoP;
   kakaoP=new Promise(function(res,rej){
@@ -1890,7 +1886,7 @@ function kakaoSend(name,memo,link){
 var GIFT_KEY='mymyGiftsLeft',GIFT_FREE=10;
 function giftsLeft(){var n=null;try{n=localStorage.getItem(GIFT_KEY);}catch(e){}n=n===null?GIFT_FREE:+n;return isNaN(n)?GIFT_FREE:Math.max(0,n);}
 function showGifts(){var n=giftsLeft(),c=$('gCount');if(c){c.textContent=n;c.classList.toggle('zero',n<=0);}var l=$('gLeft');if(l)l.textContent=n>0?'🎁 무료 선물 '+n+'번 남았어요':'🎁 무료 선물을 다 썼어요. (선물권 구매는 곧 생겨요)';}
-function useGift(){var n=giftsLeft()-1;try{localStorage.setItem(GIFT_KEY,String(Math.max(0,n)));}catch(e){}showGifts();}
+function useGift(){var n=Math.max(0,giftsLeft()-1);setGiftsLocal(n);if(!LOCAL)fbReq('PUT','users/{uid}/gifts',n).catch(function(){});}
 function canGift(){if(giftsLeft()>0)return true;msg('🎁 무료 선물 10번을 다 썼어요. 선물권 구매 기능은 곧 생겨요.');return false;}
 function openGift(i){
   actx();sClick();
@@ -1909,6 +1905,7 @@ function openGift(i){
   $('giftHelp').innerHTML=LOCAL?'⚠ 선물하기는 인터넷 주소(GitHub)에서 열었을 때만 돼요.':'카톡은 테이프 그림 카드로, 문자는 링크로 가요.';
   kakaoLoad();
   voiceShow();showGifts();
+  if(!LOCAL&&t.hasVoice&&!t.voiceId)voiceUp(t).catch(function(){});
   $('giftWrap').classList.add('show');
 }
 /* 버튼을 누른 순간 바로 복사해요 (휴대폰에서 가장 잘 되는 방법 두 가지를 같이 써요) */
@@ -1924,13 +1921,22 @@ function openKakao(){
   msg('📋 선물 링크를 복사했어요! 카톡이 열리면 친구를 고르고, 입력칸을 길게 눌러 붙여넣기 하세요.');
   setTimeout(function(){location.href='kakaotalk://launch';},400);
 }
+/* 목소리가 아직 안 올라갔으면 올리고 다시 누르게 해요 (못 올리면 한 번 더 누를 때 목소리 없이 가요) */
+var voiceSkip=false;
+function voiceReady(t){
+  if(!t.hasVoice||t.voiceId||voiceSkip){voiceSkip=false;return true;}
+  msg('🎙 목소리를 올리고 있어요. 잠시만요…');
+  voiceUp(t).then(function(){msg('🎙 목소리를 올렸어요. 한 번 더 눌러 보내 주세요.');})
+    .catch(function(){voiceSkip=true;msg('🎙 목소리를 못 올렸어요. 한 번 더 누르면 목소리 없이 보내요.');});
+  return false;
+}
 $('gShare').addEventListener('click',function(){
   if(giftIdx<0)return;
   if(LOCAL){msg('선물하기는 인터넷 주소(GitHub)에서 열었을 때만 돼요.');return;}
   var t=tapes[giftIdx],name=($('gTitle').value||'').trim()||t.name,memo=($('gMemo').value||'').trim();
+  if(!canGift()||!voiceReady(t))return;
   giftLink=makeGiftLink(t,name,memo);
   /* 1) 카카오 카드로 보내기 (긴 주소가 안 보여요) */
-  if(!canGift())return;
   if(kakaoSend(name,memo,giftLink)){useGift();$('giftWrap').classList.remove('show');msg('💬 카톡이 열려요. 친구를 고르면 테이프 카드가 가요!');return;}
   /* 2) 카카오가 안 되면 예전 방식: 링크 복사 + 공유 */
   var text='📼 "'+name+'" '+(memo||'좋은 노래를 담았어요 🎶')+'\n'+giftLink;
@@ -1947,7 +1953,7 @@ $('gShare').addEventListener('click',function(){
 $('gCopy').addEventListener('click',function(){
   if(giftIdx<0)return;
   var t=tapes[giftIdx],name=($('gTitle').value||'').trim()||t.name,memo=($('gMemo').value||'').trim();
-  if(!canGift())return;
+  if(!canGift()||!voiceReady(t))return;
   var link=makeGiftLink(t,name,memo),text='📼 "'+name+'" '+(memo||'좋은 노래를 담았어요 🎶')+'\n'+link;
   copyNow(text);useGift();$('giftWrap').classList.remove('show');
   location.href='sms:?body='+encodeURIComponent(text);
@@ -1955,9 +1961,95 @@ $('gCopy').addEventListener('click',function(){
 $('gClose').addEventListener('click',function(){$('giftWrap').classList.remove('show');});
 $('giftWrap').addEventListener('click',function(e){if(e.target===this)this.classList.remove('show');});
 
-/* 🎙 목소리 한마디 녹음 (지금은 이 휴대폰에만 저장, 친구에게 보내기는 나중에 연결) */
+/* ---------- Firebase (Realtime Database · 싱가포르) ----------
+   ① 선물 목소리를 올려 두고 친구가 받아 들어요  ② 남은 선물 수(10)를 저장해요
+   로그인은 화면에 안 보이는 "익명 로그인"으로 해요 (Firebase에서 익명 로그인을 켜 둬야 해요) */
+var FB={key:'AIzaSyDnsj9dxYrPow82Wd6kUnqVJvfACTqMWf4',db:'https://giftwav-9ab6b-default-rtdb.asia-southeast1.firebasedatabase.app',root:'wav2tape'};
+var fbTok=null,fbExp=0,fbUid=null,fbAuthP=null,FB_AUTH_KEY='w2tAuth';
+function fbJson(r){return r.json().catch(function(){return null;}).then(function(j){if(!r.ok){var e=new Error((j&&j.error&&(j.error.message||j.error))||('http '+r.status));e.status=r.status;throw e;}return j;});}
+function fbSignUp(){
+  return fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+FB.key,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({returnSecureToken:true})})
+    .then(fbJson).then(function(j){return {tok:j.idToken,rt:j.refreshToken,uid:j.localId,exp:+j.expiresIn};});
+}
+function fbAuth(){
+  if(fbTok&&Date.now()<fbExp-60000)return Promise.resolve(fbTok);
+  if(fbAuthP)return fbAuthP;
+  var saved=null;try{saved=JSON.parse(localStorage.getItem(FB_AUTH_KEY));}catch(e){}
+  var p=(saved&&saved.rt)
+    ?fetch('https://securetoken.googleapis.com/v1/token?key='+FB.key,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=refresh_token&refresh_token='+encodeURIComponent(saved.rt)})
+      .then(fbJson).then(function(j){return {tok:j.id_token,rt:j.refresh_token,uid:j.user_id,exp:+j.expires_in};})
+      /* 인터넷이 끊긴 거면 새로 만들지 않아요 (새로 만들면 선물 수가 다시 10이 되니까) */
+      .catch(function(e){if(e.status===400)return fbSignUp();throw e;})
+    :fbSignUp();
+  fbAuthP=p.then(function(a){
+    fbTok=a.tok;fbUid=a.uid;fbExp=Date.now()+(a.exp||3600)*1000;fbAuthP=null;
+    try{localStorage.setItem(FB_AUTH_KEY,JSON.stringify({rt:a.rt,uid:a.uid}));}catch(e){}
+    return fbTok;
+  },function(e){fbAuthP=null;throw e;});
+  return fbAuthP;
+}
+function fbReq(method,path,body){
+  return fbAuth().then(function(tok){
+    return fetch(FB.db+'/'+FB.root+'/'+path.replace('{uid}',fbUid)+'.json?auth='+encodeURIComponent(tok),
+      {method:method,headers:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(typeof body==='function'?body():body)});
+  }).then(fbJson);
+}
+/* 남은 선물 수: 서버 숫자와 이 휴대폰 숫자 중 작은 쪽으로 맞춰요 (서버는 줄어들기만 해요) */
+function setGiftsLocal(n){try{localStorage.setItem(GIFT_KEY,String(Math.max(0,n)));}catch(e){}showGifts();}
+function giftSync(){
+  if(LOCAL)return;
+  fbReq('GET','users/{uid}/gifts').then(function(n){
+    var loc=giftsLeft();
+    if(typeof n!=='number')return fbReq('PUT','users/{uid}/gifts',loc);
+    var m=Math.min(n,loc);setGiftsLocal(m);
+    if(m<n)return fbReq('PUT','users/{uid}/gifts',m);
+  }).catch(function(){});
+}
+/* 선물 목소리 올리기: 녹음이 끝나면 바로 올려 두고, 선물 링크에 번호(v=)만 붙여요 */
+var voiceUpP={};
+function voiceKeyOf(t){return 'voice:'+(t.vid||(t.vid='v'+Date.now().toString(36)));}
+function blobB64(b){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(String(r.result).split(',')[1]||'');};r.onerror=function(){rej(r.error);};r.readAsDataURL(b);});}
+function voiceUp(t){
+  if(!t||!t.hasVoice)return Promise.resolve(null);
+  if(t.voiceId)return Promise.resolve(t.voiceId);
+  var k=voiceKeyOf(t);if(voiceUpP[k])return voiceUpP[k];
+  voiceUpP[k]=dbGet(k).then(function(blob){
+    if(!blob)throw new Error('none');
+    return blobB64(blob).then(function(a){
+      if(a.length>390000)throw new Error('big');
+      var id='v'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+      return fbReq('PUT','voices/'+id,function(){return {a:a,t:(blob.type||'audio/webm').slice(0,50),u:fbUid,at:{'.sv':'timestamp'}};}).then(function(){t.voiceId=id;save();return id;});
+    });
+  }).then(function(id){delete voiceUpP[k];return id;},function(e){delete voiceUpP[k];throw e;});
+  return voiceUpP[k];
+}
+/* 받은 선물 목소리: 테이프를 넣으면 노래 전에 먼저 나와요 */
+var voiceGet={};
+function voiceFetch(id){
+  if(voiceGet[id])return voiceGet[id];
+  voiceGet[id]=fetch(FB.db+'/'+FB.root+'/voices/'+id+'.json').then(function(r){return r.ok?r.json():null;}).then(function(j){
+    if(!j||typeof j.a!=='string')return null;
+    var bin=atob(j.a),arr=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);
+    return URL.createObjectURL(new Blob([arr],{type:j.t||'audio/webm'}));
+  }).catch(function(){delete voiceGet[id];return null;});
+  return voiceGet[id];
+}
+function giftVoice(i){
+  var t=tapes[i];if(!t||!t.gv)return Promise.resolve();
+  return Promise.race([voiceFetch(t.gv),wait(4000).then(function(){return null;})]).then(function(u){
+    if(!u)return;
+    return new Promise(function(res){
+      var a=new Audio(u),done=false,fin=function(){if(!done){done=true;res();}};
+      a.onended=fin;a.onerror=fin;setTimeout(fin,12000);
+      msg('🎙 선물한 친구의 목소리가 먼저 나와요');
+      var p=a.play();if(p&&p.catch)p.catch(fin);
+    });
+  });
+}
+
+/* 🎙 목소리 한마디 녹음 → Firebase에 올려서 선물과 같이 가요 */
 var recM=null,recChunks=[],recTimer=null;
-function voiceKey(){return 'voice:'+(giftIdx>=0&&tapes[giftIdx]?(tapes[giftIdx].vid||(tapes[giftIdx].vid='v'+Date.now().toString(36))):'x');}
+function voiceKey(){return giftIdx>=0&&tapes[giftIdx]?voiceKeyOf(tapes[giftIdx]):'voice:x';}
 function voiceShow(){
   var t=tapes[giftIdx];$('gPlayV').hidden=!(t&&t.hasVoice);
   $('gRec').textContent=t&&t.hasVoice?'🎙 다시 녹음':'🎙 목소리 한마디 녹음';$('gRec').classList.remove('on');
@@ -1971,7 +2063,11 @@ $('gRec').addEventListener('click',function(){
     recM.onstop=function(){
       clearTimeout(recTimer);st.getTracks().forEach(function(tr){tr.stop();});
       var blob=new Blob(recChunks,{type:recM.mimeType||'audio/webm'});
-      dbPut(voiceKey(),blob).then(function(){tapes[giftIdx].hasVoice=true;save();voiceShow();msg('🎙 녹음했어요. ▶ 들어 보기로 확인해 보세요.');});
+      var vt=tapes[giftIdx];
+      dbPut(voiceKeyOf(vt),blob).then(function(){
+        vt.hasVoice=true;vt.voiceId=null;save();voiceShow();msg('🎙 녹음했어요. 선물에 같이 보낼 수 있게 올리고 있어요…');
+        if(!LOCAL)voiceUp(vt).then(function(){msg('🎙 녹음을 올렸어요. 선물하면 친구가 테이프를 넣을 때 먼저 들려요.');}).catch(function(){msg('🎙 녹음은 저장했어요. 인터넷이 되면 선물할 때 다시 올려요.');});
+      });
     };
     recM.start();$('gRec').classList.add('on');$('gRec').textContent='⏹ 녹음 끝내기 (10초)';
     recTimer=setTimeout(function(){if(recM&&recM.state==='recording')recM.stop();},10000);
@@ -2029,7 +2125,7 @@ function fetchTitles(t){
   });
 }
 var giftMemo='';
-/* 숨은 목록 만들기: Giftwav 글씨를 빠르게 5번 누르면 열려요 */
+/* 숨은 목록 만들기: by Giftwav 글씨를 빠르게 5번 누르면 열려요 */
 var kymTaps=[],ADM=null;
 document.querySelector('.kym').addEventListener('click',function(){
   var now=Date.now();kymTaps=kymTaps.filter(function(t){return now-t<2500;});kymTaps.push(now);
@@ -2090,7 +2186,8 @@ function needInstall(){
 }
 function importGift(){
   if(needInstall())return;
-  var q=null,qt=null,qm=null;try{var P=new URLSearchParams(location.search);q=P.get('tape');qt=P.get('t');qm=P.get('m');}catch(e){}
+  var q=null,qt=null,qm=null,qv=null;try{var P=new URLSearchParams(location.search);q=P.get('tape');qt=P.get('t');qm=P.get('m');qv=P.get('v');}catch(e){}
+  if(qv&&!/^[\w-]{6,40}$/.test(qv))qv=null;
   if(qm){try{giftMemo=b64d(qm);}catch(e){}}
   if(!q&&!qt)return;
   try{
@@ -2106,6 +2203,7 @@ function importGift(){
     var sig=function(o){return o.name+'|'+filled(o).map(function(k){return idOf(o.songs[k].url);}).join(',');};
     var dup=-1;tapes.forEach(function(o,i){if(sig(o)===sig(t))dup=i;});
     if(dup<0){t.slot=freeSlot();tapes.push(t);dup=tapes.length-1;}
+    if(qv){tapes[dup].gv=qv;voiceFetch(qv);}
     ti=dup;page=Math.floor(tapes[dup].slot/PER_PAGE);save();gifted=true;
     fetchTitles(tapes[dup]);
   }catch(e){}
@@ -2168,12 +2266,12 @@ document.addEventListener('click',function(e){
   b.classList.remove('lit');void b.offsetWidth;b.classList.add('lit');
   setTimeout(function(){b.classList.remove('lit');},450);
 },true);
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closePop();$('giftWrap').classList.remove('show');if($('guideWrap').classList.contains('show'))closeGuide();}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){$('giftWrap').classList.remove('show');if($('guideWrap').classList.contains('show'))closeGuide();}});
 
 /* ---------- 휴대폰 뒤로 가기 ----------
    창(노래 찾기·선물하기·목록 만들기 등)이 열리면 뒤로 가기 한 칸을 만들어 둬요.
    뒤로 가기를 누르면 맨 위 창만 닫히고, 창이 없을 때만 앱에서 나가요 */
-var OV_CLOSE={popWrap:'pBack',giftWrap:'gClose',adminWrap:'admClose',qgWrap:'qgClose',libWrap:'libClose',findWrap:'findClose',pickWrap:'pickClose',guideWrap:'gSkip'};
+var OV_CLOSE={giftWrap:'gClose',adminWrap:'admClose',qgWrap:'qgClose',libWrap:'libClose',findWrap:'findClose',pickWrap:'pickClose',guideWrap:'gSkip'};
 var ovStack=[],ovPushed=0,ovSkip=0,ovT=null;
 function ovSync(){
   ovT=null;
@@ -2199,7 +2297,7 @@ window.addEventListener('popstate',function(){
 
 /* ---------- 시작 ---------- */
 (function(){var th=null;try{th=localStorage.getItem(THEME_KEY);}catch(e){}setTheme(th||'white');})();
-load();importGift();renderRack();renderList();setReels(0);updateNow();setBoard(NOTICE);showGifts();
+load();importGift();renderRack();renderList();setReels(0);updateNow();setBoard(NOTICE);showGifts();giftSync();
 /* 선물 링크로 열면: 테이프가 바로 마이마이에 들어가고, ▶ 재생만 누르면 돼요 */
 var IN_KAKAO=/KAKAOTALK/i.test(navigator.userAgent);
 if(gifted&&IN_KAKAO){
